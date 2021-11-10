@@ -14,9 +14,13 @@ app.config.from_object(flask_config) # 载入配置文件
 def hello_world():
     return render_template('index.html')
 
-@app.route('/article') # 创建根路由
+@app.route('/article')
 def article():
     return render_template('article.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 # 启动
 if __name__ == '__main__':

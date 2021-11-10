@@ -77,6 +77,16 @@
         .container .article-comment {
             margin-top: 20px;
         }
+        .container .article-comment .nick {
+            margin-top: 10px;
+            
+        }
+        .container .article-comment .comment-button {
+            margin-top: 10px;
+            
+        }
+
+
         /* 线框，开发调试使用 */
         .row div {
             border: solid 2px red;
@@ -173,6 +183,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-12" style="border: none; padding: 0px;">
+                
                 <!-- 文章头 -->
                 <div class="col-12 row article-header">
                     <!-- 标题和详情 -->
@@ -185,8 +196,9 @@
                     </div>
                     <div class="col-12 article-info">文章信息</div>
                 </div>
+                
                 <!-- 文章体 -->
-                <div class="col-12 article-body">
+                <div class="col-12 row article-body">
                     <!-- 文章内容 -->
                     <div class="col-12 article-content">
                     文章内容
@@ -202,26 +214,31 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- 评论区 -->
                 <div class="col-12 row article-comment">
 
                     <!-- 昵称输入 -->
-                    <div class="col-sm-2 col-12">
-                        <label for="yournick">你的昵称：</label>
-                    </div>
-                    <div class="col-sm-10 col-12">
-                        <input type="text" id="yournick" class="form-control" />
+                    <div class="nick col-12 row">
+                        <div class="col-sm-2 col-12">
+                            <label for="yournick">你的昵称：</label>
+                        </div>
+                        <div class="col-sm-10 col-12">
+                            <input type="text" id="yournick" class="form-control" />
+                        </div>
                     </div>
 
                     <!-- 评论输入 -->
-                    <div class="col-sm-2 col-12">
-                        <label for="yourcomment">你的评论：</label>
-                    </div>
-                    <div class="col-sm-10 col-12">
-                        <textarea class="form-control" id="yourcomment" style="height: 100px;"></textarea>
+                    <div class="comment col-12 row">
+                        <div class="col-sm-2 col-12">
+                            <label for="yourcomment">你的评论：</label>
+                        </div>
+                        <div class="col-sm-10 col-12">
+                            <textarea class="form-control" id="yourcomment" style="height: 100px;"></textarea>
+                        </div>
                     </div>
                     
-                    <div class="col-12">
+                    <div class="col-12 comment-button">
                         <div class="col-12" style="text-align: right">
                             <button class="btn btn-primary">发表评论</button>
                         </div>
