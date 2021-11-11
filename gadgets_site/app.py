@@ -22,6 +22,10 @@ def article():
 def login():
     return render_template('login.html')
 
+@app.route('/post')
+def post():
+    return render_template('post.html')
+
 # 启动
 if __name__ == '__main__':
     app.run()
