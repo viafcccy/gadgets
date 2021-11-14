@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Gadgets Yard</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap-5.1.3-dist/css/bootstrap.css" />
+    <script type="text/javascript" src="/bootstrap-5.1.3-dist/js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 自定义样式 -->
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+        .header {
+            border-top: solid 3px black ;
+        }
+        /* 导航栏 */
+        .meau {
+            border-top: solid 3px orange;
+            background-color: black;
+        }
+        .meau .meau-bar a:link, .meau-bar a:visited {
+            color: paleturquoise;
+        }
+        .meau .meau-bar a:hover {
+            color: orange;
+        }
+        /* 文章 */
+        .container .article {
+            border-radius: 10px;
+	    	background-color: rgba(0, 0, 0, 0.4);
+	    }
+        .container .article-title a:link {
+	    	color: blue;
+	    }
+        .container .article-title a:visited {
+	    	color: gray;
+	    }
+        .container .article-title a:hover {
+	    	color: orange;
+	    }
+        .container .side {
+            height: 340px;
+            border: solid 2px black;
+            margin: 20px 0;
+            padding: 0px;
+        }
+        .container .side-title {
+            background-color: grey;
+            height: 42px;
+            color: wheat;
+            font-size: 18px;
+            border-bottom: solid 2px orangered;
+        }
+        /* 文章推荐等列表样式 */
+        .container .side ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        .container .side ul li {
+            line-height: 35px;
+        }
+        @media (min-width: 768px){
+            .container {
+                max-width: 1800px;
+            }
+        }
+
+        /* 线框，开发调试使用 */
+        .row div {
+            border: solid 2px red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo和Slogan -->
+    <div class="header">
+        <div class="container" style="border: solid 2px red">
+            <div class="row">
+                <div class="col-5" style="padding-top: 10px;"><img src="/img/logo.jpg" width="230px" /></div>
+                <div class="col-7" style="padding-top: 10px;">
+                    <div class="col-12 d-none d-sm-block" style="text-align: right; border: solid 2px blue; padding-top: 20px;">
+                        <h2>Just for fun.</h2>
+                    </div>
+                    <div class="col-12" style="text-align: right; border: solid 2px blue; padding-top: 20px;">
+                        <h2>Not just a blog.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="meau">
+        <div class="container" style="border: solid 2px red; padding: 0px">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="#">快捷导航</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse meau-bar" id="navbarSupportedContent">
+                    
+                    <!-- 导航栏 -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">杂谈</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        技术专栏
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">前端</a></li>
+                        <li><a class="dropdown-item" href="#">Python</a></li>
+                        <li><a class="dropdown-item" href="#">MySQL</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">其它</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">站点发展</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">敬请期待 coding...</a>
+                    </li>
+                    </ul>
+
+                    <!-- 搜索栏 -->
+                    <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="请输入关键词" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                    </form>
+
+                    <!-- 用户登录相关 -->
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">登录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">注册</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">用户中心</a>
+                        </li>
+                    </ul>
+
+                    <!-- 账号模态框 -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">账号</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <!-- 账号选项卡 -->
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">登录</button>
+                                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">注册</button>
+                                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">找回密码</button>
+                                        </div>
+                                    </nav>
+
+                                    <!-- 绘制选项卡 -->
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <!-- 登录 -->
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                            <form>
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginname" class="col-4">登录邮箱：</label>
+                                                    <input type="text" name="loginname" id="loginname" class="form-group col-7" placeholder="请输入你的邮箱地址" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">登录密码：</label>
+                                                    <input type="password" name="loginpwd" id="loginpwd" class="form-group col-7" placeholder="请输入你的密码" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="logincode" class="col-4">验证码：</label>
+                                                    <input type="text" name="logincode" id="logincode" class="form-group col-5" placeholder="请输入你的验证码" />
+                                                    <img src="/vcode" id="loginvcode" class="col-3" style="text-align: right;"/>
+                                                </div>
+                                            </form>
+                                            
+                                            <div class="modal-footer">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-6" style="border: solid red 2px;">
+                                                        密码请大于8位数，且同时有英文和数字！
+                                                    </div>
+                                                    <div class="col-6" style="text-align: right">
+                                                        <button type="button" class="btn btn-primary" onclick="alter">登录</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 注册 -->
+                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                            <form>
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginname" class="col-4">登录邮箱：</label>
+                                                    <input type="text" name="loginname" id="loginname" class="form-group col-7" placeholder="请输入你的邮箱地址" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">登录密码：</label>
+                                                    <input type="password" name="loginpwd" id="loginpwd" class="form-group col-7" placeholder="请输入你的密码" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">重复密码：</label>
+                                                    <input type="password" name="loginpwd" id="loginpwd" class="form-group col-7" placeholder="重复你的密码" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">邮箱验证码：</label>
+                                                    <input type="text" name="login-mail-code" id="loginpwd" class="form-group col-4" placeholder="请输入邮箱验证码" />
+                                                    <button type="button" class="btn btn-primary col-2" style="margin-left: 20px;" onclick="">发送</button>
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="logincode" class="col-4">验证码：</label>
+                                                    <input type="text" name="login-vcode" id="logincode" class="form-group col-4" placeholder="请输入验证码" />
+                                                    <img src="/vcode" id="login-vcode-img" class="col-3" style="margin-left: 20px;"/>
+                                                </div>
+                                            </form>
+
+                                            <div class="modal-footer">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-6" style="border: solid red 2px;">
+                                                        请牢记注册邮箱，便于登录与找回密码！
+                                                    </div>
+                                                    <div class="col-6" style="text-align: right">
+                                                        <button type="button" class="btn btn-primary" onclick="alter">登录</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 找回密码 -->
+                                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                                            <form>
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginname" class="col-4">登录邮箱：</label>
+                                                    <input type="text" name="loginname" id="loginname" class="form-group col-7" placeholder="请输入你的邮箱地址" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">新的密码：</label>
+                                                    <input type="password" name="loginpwd" id="loginpwd" class="form-group col-7" placeholder="请输入新的密码" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">重复密码：</label>
+                                                    <input type="password" name="loginpwd" id="loginpwd" class="form-group col-7" placeholder="重复新的密码" />
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="loginpwd" class="col-4">邮箱验证码：</label>
+                                                    <input type="text" name="login-mail-code" id="loginpwd" class="form-group col-4" placeholder="请输入邮箱验证码" />
+                                                    <button type="button" class="btn btn-primary col-2" style="margin-left: 20px;" onclick="">发送</button>
+                                                </div>
+
+                                                <div class="form-group row logintext" style="margin: 30px 0px;">
+                                                    <label for="logincode" class="col-4">验证码：</label>
+                                                    <input type="text" name="login-vcode" id="logincode" class="form-group col-4" placeholder="请输入验证码" />
+                                                    <img src="/vcode" id="login-vcode-img" class="col-3" style="margin-left: 20px;"/>
+                                                </div>
+                                            </form>
+
+                                            <div class="modal-footer">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-6" style="border: solid red 2px;">
+                                                        请使用注册邮箱，发送验证码找回密码！
+                                                    </div>
+                                                    <div class="col-6" style="text-align: right">
+                                                        <button type="button" class="btn btn-primary" onclick="alter">登录</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 页面主体，响应式布局 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-12" style="border: none; padding: 0px;">
+                <!-- 轮播图 -->
+                <div class="col-12 d-none d-sm-block" style="border: none; padding: 15px 0px;">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="/img/banner_1.jpg" class="d-block w-100" alt="第一张" style="width:100%; height: 300px;">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/img/banner_2.jpg" class="d-block w-100" alt="第二张" style="width:100%; height: 300px;">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/img/banner_3.jpg" class="d-block w-100" alt="第三张" style="width:100%; height: 300px;">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+                <!-- 文章展示 -->
+                <div class="row article" style="height: 120px; border: solid 1px gray; margin: 10px 0px;">
+                    <!-- 文章展示图 -->
+                    <div class="col-sm-3 hidden-xs article-thumb">
+                        <img src="" class="img-fluid">
+                    </div>
+                    <div class="col-sm-9 col-12 ">
+                        <!-- 文章题目 -->
+                        <div class="article-title">
+                            <a href="#">文章题目</a>
+                        </div>
+                        <!-- 文章信息 -->
+                        <div class="article-info">作者：时间：</div>
+                        <!-- 文章内容概述 -->
+                        <div class="article-intro">正文</div>
+                    </div>
+                </div>
+                <div class="col-12" style="height: 120px; border: solid 1px gray; margin: 10px 0px;">1</div>
+                <div class="col-12" style="height: 120px; border: solid 1px gray; margin: 10px 0px;">1</div>
+                <div class="col-12" style="height: 120px; border: solid 1px gray; margin: 10px 0px;">1</div>
+                <div class="col-12" style="height: 120px; border: solid 1px gray; margin: 10px 0px;">1</div>
+            </div>
+            <!-- 侧边栏 -->
+            <div class="col-sm-3 col-12" style="border: none; padding-right: 0px;">
+                <!-- 文章推荐栏 -->
+                <div class="col-12 side">
+                    <div class="side-title">文章推荐</div>
+                    <ul>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                        <li><a href="#">1.aaa</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 side">1</div>
+                <div class="col-12 side">2</div>
+                <div class="col-12 side" style="height: 400px; border: solid 1px gray; margin: 20px 0px;">3</div>
+            </div>
+        </div>
+    </div>
+    <!-- 主页尾部 -->
+    <div class="container-fluid" style="height: 100px; border: solid 2px red;"></div>
+</body>
+</html>
